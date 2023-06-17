@@ -1,0 +1,114 @@
+﻿@model RegisterVM
+@{
+    ViewData["Title"] = "SignUp";
+}
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f6f6f6;
+        }
+
+    #checkbox1 {
+        position: relative;
+        top: -30px;
+        right: -1000px;
+    }
+
+    #checkbox2 {
+        position: relative;
+        top: -30px;
+        right: -1000px;
+    }
+        .container {
+
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+            .container h2 {
+                text-align: center;
+                color: #333333;
+                margin-bottom: 20px;
+            }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group label {
+                display: block;
+                font-weight: bold;
+                margin-bottom: 5px;
+                color: #555555;
+            }
+
+            .form-group input[type="text"],
+            .form-group input[type="email"],
+            .form-group input[type="password"] {
+                width: 100%;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                background-color: #f2f2f2;
+                color: #333333;
+            }
+
+            button {
+                width: 100%;
+                padding: 10px;
+                background-color: #4285f4;
+                color: #ffffff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+                button:hover {
+                    background-color: #3367d6;
+                }
+    </style>
+
+    <div class="container">
+        <h2>Create an Account</h2>
+        <form asp-action="SignUp" method="post">
+            <div class="form-group">
+                <label >Username</label>
+            <input asp-for="UserName">
+            <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Full Name</label>
+            <input asp-for="FullName" >
+            <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label >Email Address</label>
+                <input asp-for="Email" >
+            <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input asp-for="Password" type="password" id="password1">
+            <input type="checkbox" id="checkbox1" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Confirm Password</label>
+            <input asp-for="CPassword" type="password" id="password2">
+            <input type="checkbox" id="checkbox2" />
+            <span asp-validation-for="CPassword" class="text-danger"></span>
+        </div>
+
+            <div class="form-group">
+            <button type="submit">Register</button>
+            </div>
+            <div class="text-danger" asp-validation-summary="All"></div>
+        </form>
+    </div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/account.js"></script>
+}
